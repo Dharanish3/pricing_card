@@ -1,67 +1,101 @@
 import React from "react";
 
-function Price(props) {
+function Price({ value }) {
   return (
     <>
       <div className="col-lg-4">
         <div className="card mb-5 mb-lg-0">
           <div className="card-body">
             <h5 className="card-title text-muted text-uppercase text-center">
-              {props.value.cost}
+              {value.cost}
             </h5>
             <h6 className="card-price text-center">
-              {props.value.price}
+              {value.price}
               <span className="period">/month</span>
             </h6>
             <hr />
             <ul className="fa-ul">
-              <li>
+              <li className={value.isUser ? "" : "text-muted"}>
                 <span className="fa-li">
-                  <i className="fas fa-check"></i>
+                  <i
+                    className={value.isUser ? "fas fa-check" : "fas fa-times"}
+                  ></i>
                 </span>
-                {props.value.user}
+                {value.cost !== "Free" ? (
+                  <b>{value.user}</b>
+                ) : (
+                  <>{value.user}</>
+                )}
               </li>
-              <li>
+              <li className={value.isStorage ? "" : "text-muted"}>
                 <span className="fa-li">
-                  <i className="fas fa-check"></i>
+                  <i
+                    className={
+                      value.isStorage ? "fas fa-check" : "fas fa-times"
+                    }
+                  ></i>
                 </span>
-                {props.value.storage}
+                {value.storage}
               </li>
-              <li>
+              <li className={value.isProjects ? "" : "text-muted"}>
                 <span className="fa-li">
-                  <i className="fas fa-check"></i>
+                  <i
+                    className={
+                      value.isProjects ? "fas fa-check" : "fas fa-times"
+                    }
+                  ></i>
                 </span>
-                {props.value.projects}
+                {value.projects}
               </li>
-              <li>
+              <li className={value.isAccess ? "" : "text-muted"}>
                 <span className="fa-li">
-                  <i className="fas fa-check"></i>
+                  <i
+                    className={value.isAccess ? "fas fa-check" : "fas fa-times"}
+                  ></i>
                 </span>
-                {props.value.access}
+                {value.access}
               </li>
-              <li className="text-muted">
+              <li className={value.isSupport ? "" : "text-muted"}>
                 <span className="fa-li">
-                  <i className="fas fa-times"></i>
+                  <i
+                    className={
+                      value.isSupport ? "fas fa-check" : "fas fa-times"
+                    }
+                  ></i>
                 </span>
-                {props.value.user}
+                {value.support}
               </li>
-              <li className="text-muted">
+              <li className={value.isPrivate ? "" : "text-muted"}>
                 <span className="fa-li">
-                  <i className="fas fa-times"></i>
+                  <i
+                    className={
+                      value.isPrivate ? "fas fa-check" : "fas fa-times"
+                    }
+                  ></i>
                 </span>
-                {props.value.private}
+                {value.private}
               </li>
-              <li className="text-muted">
+              <li className={value.isDomain ? "" : "text-muted"}>
                 <span className="fa-li">
-                  <i className="fas fa-times"></i>
+                  <i
+                    className={value.isDomain ? "fas fa-check" : "fas fa-times"}
+                  ></i>
                 </span>
-                {props.value.domain}
+                {value.cost === "Pro" ? (
+                  <>
+                    <b>Unlimited</b> {value.domain}
+                  </>
+                ) : (
+                  value.domain
+                )}
               </li>
-              <li className="text-muted">
+              <li className={value.isReport ? "" : "text-muted"}>
                 <span className="fa-li">
-                  <i className="fas fa-times"></i>
+                  <i
+                    className={value.isReport ? "fas fa-check" : "fas fa-times"}
+                  ></i>
                 </span>
-                {props.value.report}
+                {value.report}
               </li>
             </ul>
             <div className="d-grid">
